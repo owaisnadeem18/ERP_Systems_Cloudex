@@ -1,5 +1,6 @@
 import React from 'react'
 import Login from '../components/auth/Login'
+import { Outlet } from 'react-router-dom'
 
 export const AuthLayout = () => {
   return (
@@ -37,7 +38,7 @@ export const AuthLayout = () => {
 
         {/* Login Form */}
         <div className="relative z-10 w-full">
-          <Login />
+          <Outlet />
         </div>
 
       </div>
