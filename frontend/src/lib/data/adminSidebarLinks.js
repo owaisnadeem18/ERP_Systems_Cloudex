@@ -1,10 +1,12 @@
 import {
   LayoutDashboard,
   Users,
-  BadgeCheck,
+  Globe,      
+  UserCheck,
   Building2,
   Clock,
   CalendarDays,
+  LogOut,
 } from "lucide-react";
 
 export const headerItems = [
@@ -19,9 +21,14 @@ export const headerItems = [
     icon: Users,
   },
   {
+    text: "Tenants",
+    route: "/admin/tenants",
+    icon: Globe,
+  },
+  {
     text: "Employees",
     route: "/admin/employees",
-    icon: BadgeCheck,
+    icon: UserCheck,
   },
   {
     text: "Departments",
@@ -37,5 +44,13 @@ export const headerItems = [
     text: "Leaves",
     route: "/admin/leaves",
     icon: CalendarDays,
+  },
+];
+
+export const footerItems = [
+  {
+    text: "Logout",
+    route: "/login",
+    icon: LogOut,
   },
 ];

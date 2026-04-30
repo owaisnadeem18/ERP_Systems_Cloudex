@@ -7,12 +7,15 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 // import { useDispatch, useSelector } from 'react-redux'
 // import { setMenu } from '@/features/auth/authSlice'
 // import { handleLogout } from '@/utils/handlers/logoutHandler'
-import { headerItems } from '../../../lib/data/adminSidebarLinks'
 import { useMenu } from '../../../context/MenuContext'
+import { useGetNavItems } from '../../../hooks/useGetNavItems'
+import * as Icons from "lucide-react";
 
 const AdminSidebar = () => {
-
+  
   const { menu, toggleMenu } = useMenu();
+  
+  const { data , loading, error } = useGetNavItems();
 
   const [isLoggedOut, setIsLoggedOut] = useState(false)
              
@@ -42,7 +45,6 @@ const AdminSidebar = () => {
           <div className='flex flex-col gap-4 h-full' >
 
 
-            {/* This is the logo of our saylani microfinance app  */}
             {/* On the click of it we will toggle menu */}
             <div className='logo-div cursor-pointer flex justify-center' onClick={toggleMenu} >
 
@@ -60,15 +62,19 @@ const AdminSidebar = () => {
                 {
 
 
-                  headerItems.map((item, index) => {
+                  data.map((item, index) => {
 
                     const isActive = path.startsWith(item?.route)
+                    const IconComponent = Icons[item.icon];
 
                     return (
 
                       <Link to={item?.route} className= {`${menu ? "w-full lg:w-3/4" : "w-fit rounded-full"}`} >
                         <div className={`px-4 py-2 cursor-pointer flex gap-2 items-center rounded-full ${isActive ? "bg-white text-[#024d9a]" : "hover:bg-white/20"} ${menu ? "" : "w-12.5 h-12.5"} `} key={index} >
-                          <item.icon />
+                          <IconComponent />
+                          
+                          
+
                           {  
                             menu &&
                               <span>{item?.text}</span>}

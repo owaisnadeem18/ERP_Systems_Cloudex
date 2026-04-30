@@ -9,6 +9,8 @@ import { AuthLayout } from "./layouts/AuthLayout";
 import { Navigate } from "react-router-dom";
 import ForgotPassword from "./components/auth/ForgotPassword";
 import  ResetPassword from "./components/auth/ResetPassword";
+import TenantList from "./modules/tenant/pages/TenantList";
+import TenantForm from "./modules/tenant/pages/TenantForm";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -30,6 +32,10 @@ function App() {
 
         <Route path="/admin" element={<AdminLayout />}>
           <Route path="dashboard" element={<AdminDashboard />} />
+  <Route path="tenants" element={<TenantList />} />
+  <Route path="tenants/create" element={<TenantForm />} />
+
+
         </Route>
       </Routes>
     </>
